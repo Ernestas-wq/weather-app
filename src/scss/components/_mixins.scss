@@ -1,0 +1,37 @@
+@mixin align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+Responsive
+*/
+@mixin responsive-xsm() {
+  @media screen and (min-width: 420px) {
+    @content;
+  }
+}
+
+@mixin responsive-sm() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin responsive-md() {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin responsive-lg() {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+@mixin responsive-xlg() {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
