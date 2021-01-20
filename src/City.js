@@ -36,6 +36,7 @@ const City = () => {
         setError({ show: false, msg: '' });
         setCities([...cities, city]);
         setLoading(false);
+        tilt();
       } else {
         setLoading(false);
         setError({ show: true, msg: 'Sorry city not found' });
@@ -46,9 +47,6 @@ const City = () => {
     }
   };
 
-  useEffect(() => {
-    tilt();
-  }, [cities]);
   useEffect(() => {
     const timeout = setTimeout(() => {
       setError({ show: false, msg: '' });
