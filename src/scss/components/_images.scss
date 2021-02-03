@@ -1,0 +1,17 @@
+.images {
+  display: flex;
+  margin: 50px auto 0 auto;
+  width: 80%;
+  flex-wrap: wrap;
+  z-index: 10;
+
+  &__item {
+    max-height: 400px;
+    z-index: 10;
+    margin-bottom: 30px;
+    img {
+      height: auto;
+      border-radius: 15px;
+    }
+  }
+}

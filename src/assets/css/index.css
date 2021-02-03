@@ -177,6 +177,10 @@ h1 {
   font-size: 60px;
 }
 
+img {
+  width: 100%;
+}
+
 .search {
   z-index: 10;
   width: 40%;
@@ -202,8 +206,19 @@ h1 {
 .search-error {
   margin-top: 1rem;
   color: #ef476f;
-  text-align: center;
-  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 200px;
+  font-size: 22px;
+  padding: 10px;
+  background: #fff;
 }
 
 .input-container {
@@ -460,5 +475,46 @@ h1 {
 .cities__remove:hover {
   background-color: #fff;
   color: #161623;
+}
+
+.images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 50px auto 0 auto;
+  width: 80%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  z-index: 10;
+}
+
+.images__item {
+  max-height: 400px;
+  z-index: 10;
+  margin-bottom: 30px;
+}
+
+.images__item img {
+  height: auto;
+  border-radius: 15px;
+}
+
+.swiper-container {
+  width: 500px;
+}
+
+.swipper-wrapper {
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+.swiper-slide {
+  min-height: 600px;
+  max-height: 800px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=index.css.map */

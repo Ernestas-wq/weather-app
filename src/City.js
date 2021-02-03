@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import tilt from './tilt';
 import Loading from './Loading';
+import Pictures from './Pictures';
+
 const WEATHER_API_KEY = '2988909ac8e7345682a2988e965f721b';
 
 const checkIfCityExists = (cityName, cityArr) => {
@@ -16,9 +18,9 @@ const City = () => {
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ show: false, msg: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const fetchCity = async searchValue => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${WEATHER_API_KEY}&units=metric`;
-
     try {
       setLoading(true);
       const response = await fetch(url);
@@ -32,10 +34,10 @@ const City = () => {
           id: id,
           weather: weather[0]['description'],
         };
-        setCity('');
         setError({ show: false, msg: '' });
         setCities([...cities, city]);
         setLoading(false);
+        setIsSubmitted(true);
         tilt();
       } else {
         setLoading(false);
@@ -46,6 +48,13 @@ const City = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsSubmitted(false);
+    }, 100);
+    return () => clearTimeout(timeout);
+  });
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -120,6 +129,7 @@ const City = () => {
           </div>
         </>
       )}
+      <Pictures city={city} isSubmitted={isSubmitted} loading={loading} setCity={setCity} />
       {loading && <Loading />}
     </>
   );

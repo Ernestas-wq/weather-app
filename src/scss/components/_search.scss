@@ -20,8 +20,11 @@
 .search-error {
   margin-top: 1rem;
   color: #ef476f;
-  text-align: center;
-  font-size: 18px;
+  @include align-center();
+  width: 200px;
+  font-size: 22px;
+  padding: 10px;
+  background: #fff;
 }
 .input-container {
   margin-top: 30px;
