@@ -34,7 +34,9 @@ const Pictures = ({ city, isSubmitted, setCity, cities }) => {
       <div className="images">
         {images.length > 0 && (
           <>
-            <h2>And some pictures from {cities[cities.length - 1].name} for you to check!</h2>
+            {cities.length > 0 && (
+              <h2>And some pictures from {cities[cities.length - 1].name} for you to check!</h2>
+            )}
             <Swiper
               id="main"
               thumbs={{ swiper: thumbsSwiper }}
