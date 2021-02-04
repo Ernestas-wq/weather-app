@@ -210,7 +210,8 @@ h2 {
 
 .search {
   z-index: 10;
-  width: 40%;
+  width: 80%;
+  max-width: 700px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -236,24 +237,29 @@ h2 {
 .search-error {
   margin-top: 1rem;
   color: #ef476f;
-  text-align: center;
-  width: 250px;
   font-size: 18px;
   padding: 10px;
   border-radius: 15px;
   background: #fff;
   font-weight: 500;
-  -webkit-transition: -webkit-transform 0.5s ease-in;
-  transition: -webkit-transform 0.5s ease-in;
-  transition: transform 0.5s ease-in;
-  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transition: opacity 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  margin: 1rem auto;
+  opacity: 0;
 }
 
 .search-error-active {
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+  opacity: 1;
 }
 
 .input-container {

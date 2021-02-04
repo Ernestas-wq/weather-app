@@ -83,8 +83,6 @@ const City = () => {
         Portfolio
       </a>
       <h1>React Mini Weather</h1>
-      {error.show && <h3 className="search-error">{error.msg}</h3>}
-
       <form className="search" onSubmit={handleSubmit} autoComplete="off">
         <div className="input-container">
           <input
@@ -100,12 +98,11 @@ const City = () => {
             <span className="content-name">Search for city</span>
           </label>
         </div>
-        <div className={`${error.show ? 'search-error search-error-active' : 'search-error'}`}>
-          <p>A maximum of 2 cities is allowed!</p>
-        </div>
-
         <button>Search</button>
       </form>
+      <div className={`${error.show ? 'search-error search-error-active' : 'search-error'}`}>
+        <p>{error.msg}</p>
+      </div>
       {!loading && (
         <>
           <div className="cities">

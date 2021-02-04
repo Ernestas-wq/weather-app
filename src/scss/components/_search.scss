@@ -1,6 +1,7 @@
 .search {
   z-index: 10;
-  width: 40%;
+  width: 80%;
+  max-width: 700px;
   margin: 0 auto;
   overflow: hidden;
   button {
@@ -22,18 +23,22 @@
 .search-error {
   margin-top: 1rem;
   color: #ef476f;
-  text-align: center;
   font-size: 18px;
   padding: 10px;
   border-radius: 15px;
   background: #fff;
   font-weight: 500;
-  transition: transform 0.5s ease-in;
-  transform: translateX(-110%);
+  transition: opacity 0.5s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: 1rem auto;
+  opacity: 0;
 }
 
 .search-error-active {
-  transform: translateX(0);
+  opacity: 1;
 }
 
 .input-container {
