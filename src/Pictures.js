@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { EffectFade, Thumbs, Autoplay, Navigation, Pagination } from 'swiper';
 const FLICKR_API_KEY = 'daad5c6194666cd0ee23c9e6b0d2d000';
 
-const Pictures = ({ city, isSubmitted, setCity }) => {
+const Pictures = ({ city, isSubmitted, setCity, cities }) => {
   const [images, setImages] = useState([]);
   const [thumbsSwiper, setThumbsSwiper] = useState();
   SwiperCore.use([EffectFade, Autoplay, Navigation, Pagination]);
@@ -15,9 +15,10 @@ const Pictures = ({ city, isSubmitted, setCity }) => {
     }&safe_search=1&per_page=6&content_type=1&sort=relevance&format=json&nojsoncallback=1`;
     const response = await fetch(url);
     const result = await response.json();
+
     const pics = result.photos.photo.map(pic => {
       const { server, id, secret } = pic;
-      const src = `https://live.staticflickr.com/${server}/${id}_${secret}_w.jpg`;
+      const src = `https://live.staticflickr.com/${server}/${id}_${secret}_c.jpg`;
       return src;
     });
     setImages(pics);
@@ -25,43 +26,50 @@ const Pictures = ({ city, isSubmitted, setCity }) => {
   };
 
   if (isSubmitted) {
-    // setImages([]);
     fetchPictures(city);
   }
 
-  if (images.length > 0) {
-    return (
-      <Swiper
-        id="main"
-        thumbs={{ swiper: thumbsSwiper }}
-        tag="section"
-        wrapperTag="ul"
-        effect="fade"
-        navigation
-        pagination
-        autoplay={{
-          delay: 3000,
-        }}
-        spaceBetween={0}
-        slidesPerView={1}
-        onInit={swiper => console.log('Swiper initialized!', swiper)}
-        onSlideChange={swiper => {
-          console.log('Slide index changed to: ', swiper.activeIndex);
-        }}
-        onReachEnd={() => console.log('Swiper end reached')}
-      >
-        {images.map((ima, idx) => {
-          return (
-            <SwiperSlide key={idx} tag="li">
-              <img src={ima} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    );
-  } else {
-    return <h2>Sorry Couldn't get any images of this city</h2>;
-  }
+  return (
+    <>
+      <div className="images">
+        {images.length > 0 && (
+          <>
+            <h2>And some pictures from {cities[cities.length - 1].name} for you to check!</h2>
+            <Swiper
+              id="main"
+              thumbs={{ swiper: thumbsSwiper }}
+              tag="section"
+              wrapperTag="ul"
+              effect="fade"
+              navigation
+              pagination
+              autoplay={{
+                delay: 3000,
+              }}
+              spaceBetween={0}
+              slidesPerView={1}
+              onInit={swiper => console.log('Swiper initialized!', swiper)}
+              onSlideChange={swiper => {
+                console.log('Slide index changed to: ', swiper.activeIndex);
+              }}
+              onReachEnd={() => console.log('Swiper end reached')}
+            >
+              {images.map((img, idx) => {
+                return (
+                  <SwiperSlide key={idx} tag="li">
+                    <div
+                      className="image-container"
+                      style={{ backgroundImage: `url(${img})` }}
+                    ></div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Pictures;

@@ -66,9 +66,9 @@ const City = () => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!checkIfCityExists(city, cities)) {
-      cities.length < 3
+      cities.length < 2
         ? fetchCity(city)
-        : setError({ show: true, msg: 'A maximum of 3 cities is allowed!' });
+        : setError({ show: true, msg: 'A maximum of 2 cities is allowed!' });
     } else {
       setError({ show: true, msg: 'City already exists!' });
     }
@@ -79,6 +79,9 @@ const City = () => {
   };
   return (
     <>
+      <a href="" className="portfolio">
+        Portfolio
+      </a>
       <h1>React Mini Weather</h1>
       {error.show && <h3 className="search-error">{error.msg}</h3>}
 
@@ -97,6 +100,10 @@ const City = () => {
             <span className="content-name">Search for city</span>
           </label>
         </div>
+        <div className={`${error.show ? 'search-error search-error-active' : 'search-error'}`}>
+          <p>A maximum of 2 cities is allowed!</p>
+        </div>
+
         <button>Search</button>
       </form>
       {!loading && (
@@ -129,7 +136,13 @@ const City = () => {
           </div>
         </>
       )}
-      <Pictures city={city} isSubmitted={isSubmitted} loading={loading} setCity={setCity} />
+      <Pictures
+        cities={cities}
+        city={city}
+        isSubmitted={isSubmitted}
+        loading={loading}
+        setCity={setCity}
+      />
       {loading && <Loading />}
     </>
   );

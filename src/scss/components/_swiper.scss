@@ -1,14 +1,38 @@
 .swiper-container {
-  width: 500px;
+  width: 100vw;
+  max-width: 1000px;
+  margin-bottom: 6rem;
+  @include responsive-sm() {
+    width: 80vw;
+  }
 }
 .swipper-wrapper {
   padding-inline-start: 0;
 }
 .swiper-slide {
-  min-height: 600px;
-  max-height: 800px;
+  width: 100%;
+  height: 800px;
   img {
     width: 100%;
     height: 100%;
   }
+}
+.swiper-pagination-bullet {
+  background: white;
+  width: 12px;
+  height: 12px;
+}
+.swiper-pagination-bullet-active {
+  background: dodgerblue;
+}
+.images {
+  z-index: 15;
+}
+.image-container {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  padding: 10px;
+  border-radius: 10px;
 }

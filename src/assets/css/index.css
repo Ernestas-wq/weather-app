@@ -158,6 +158,7 @@ body::before {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
   background: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#f0f));
@@ -181,19 +182,48 @@ img {
   width: 100%;
 }
 
+h2 {
+  margin: 1rem 0;
+  text-align: center;
+  color: #fff;
+  font-size: 33px;
+  margin: 2rem auto;
+}
+
+.portfolio {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  border: 2px solid white;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  padding: 5px 15px;
+}
+
+.portfolio:hover {
+  color: #161623;
+  background: white;
+}
+
 .search {
   z-index: 10;
   width: 40%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .search button {
   margin-top: 1rem;
   background: transparent;
   border: 1px solid #fff;
-  font-size: 16px;
+  font-size: 20px;
+  text-transform: uppercase;
+  outline: none;
   color: #fff;
-  padding: 5px 20px;
+  padding: 10px 25px;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
@@ -206,19 +236,24 @@ img {
 .search-error {
   margin-top: 1rem;
   color: #ef476f;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 200px;
-  font-size: 22px;
+  text-align: center;
+  width: 250px;
+  font-size: 18px;
   padding: 10px;
+  border-radius: 15px;
   background: #fff;
+  font-weight: 500;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.search-error-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .input-container {
@@ -248,7 +283,7 @@ img {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid #fff;
 }
 
 .input-container label::after {
@@ -348,6 +383,7 @@ img {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   z-index: 1;
+  min-height: 300px;
 }
 
 .cities__card {
@@ -477,30 +513,16 @@ img {
   color: #161623;
 }
 
-.images {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 50px auto 0 auto;
-  width: 80%;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  z-index: 10;
-}
-
-.images__item {
-  max-height: 400px;
-  z-index: 10;
-  margin-bottom: 30px;
-}
-
-.images__item img {
-  height: auto;
-  border-radius: 15px;
-}
-
 .swiper-container {
-  width: 500px;
+  width: 100vw;
+  max-width: 1000px;
+  margin-bottom: 6rem;
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 80vw;
+  }
 }
 
 .swipper-wrapper {
@@ -509,12 +531,35 @@ img {
 }
 
 .swiper-slide {
-  min-height: 600px;
-  max-height: 800px;
+  width: 100%;
+  height: 800px;
 }
 
 .swiper-slide img {
   width: 100%;
   height: 100%;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  width: 12px;
+  height: 12px;
+}
+
+.swiper-pagination-bullet-active {
+  background: dodgerblue;
+}
+
+.images {
+  z-index: 15;
+}
+
+.image-container {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  padding: 10px;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=index.css.map */
