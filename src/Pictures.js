@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import 'swiper/swiper-bundle.min.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { EffectFade, Thumbs, Autoplay, Navigation, Pagination } from 'swiper';
+import SwiperCore, { EffectFade, Autoplay, Navigation, Pagination } from 'swiper';
 const FLICKR_API_KEY = 'daad5c6194666cd0ee23c9e6b0d2d000';
 
 const Pictures = ({ city, isSubmitted, setCity, cities }) => {
   const [images, setImages] = useState([]);
-  const [thumbsSwiper, setThumbsSwiper] = useState();
   SwiperCore.use([EffectFade, Autoplay, Navigation, Pagination]);
   const fetchPictures = async value => {
     const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKR_API_KEY}&tags=${value}&text=${
@@ -50,11 +49,6 @@ const Pictures = ({ city, isSubmitted, setCity, cities }) => {
               }}
               spaceBetween={0}
               slidesPerView={1}
-              onInit={swiper => console.log('Swiper initialized!', swiper)}
-              onSlideChange={swiper => {
-                console.log('Slide index changed to: ', swiper.activeIndex);
-              }}
-              onReachEnd={() => console.log('Swiper end reached')}
             >
               {images.map((img, idx) => {
                 return (
