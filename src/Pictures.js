@@ -4,7 +4,6 @@ import 'swiper/swiper-bundle.min.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { EffectFade, Autoplay, Navigation, Pagination } from 'swiper';
 const FLICKR_API_KEY = 'daad5c6194666cd0ee23c9e6b0d2d000';
-
 const Pictures = ({ city, isSubmitted, setCity, cities }) => {
   const [images, setImages] = useState([]);
   SwiperCore.use([EffectFade, Autoplay, Navigation, Pagination]);

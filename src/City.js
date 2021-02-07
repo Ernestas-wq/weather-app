@@ -79,7 +79,7 @@ const City = () => {
   };
   return (
     <>
-      <a href="" className="portfolio">
+      <a href="https://ernestas-portfolio.netlify.app/" className="portfolio">
         Portfolio
       </a>
       <h1>React Mini Weather</h1>
