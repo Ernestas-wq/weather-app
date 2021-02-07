@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import 'swiper/swiper-bundle.min.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -37,7 +37,6 @@ const Pictures = ({ city, isSubmitted, setCity, cities }) => {
             )}
             <Swiper
               id="main"
-              thumbs={{ swiper: thumbsSwiper }}
               tag="section"
               wrapperTag="ul"
               effect="fade"
